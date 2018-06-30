@@ -1,5 +1,8 @@
 class ListsController < ApplicationController
+  before_action :signed_in?
+
   def index
+    @lists = List.all
   end
 
   def new
@@ -7,15 +10,28 @@ class ListsController < ApplicationController
   end
 
   def create
-    binding.pry
     @list = List.create(list_params)
     redirect_to lists_path
+  end
+
+  def show
+    @list = List.find(params[:id])
+    @tasks = @list.tasks
+  end
+
+  def edit
+  end
+
+  def update
+  end
+
+  def destroy
+
   end
 
   private
 
   def list_params
-    binding.pry
     params.require(:list).permit(:name)
   end
 

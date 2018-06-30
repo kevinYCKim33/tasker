@@ -1,0 +1,17 @@
+<h3> <%=@list.name%> </h3>
+
+<%= form_with model: @tasks.build do |f| %>
+  <%= f.hidden_field :list_id %>
+  <%= f.text_field :task, placeholder: "Task", required: true, autofocus: true%>
+  <%= f.submit "Create" %>
+<% end %>
+
+<ul>
+<% @tasks[0...-1].each do |task| %>
+  <li class="task" id=<%=task.id %>><%=task.task%></li>
+  <%= form_with model: task, method: :delete do |f| %>
+    <%= f.submit "Delete"%>
+  <% end %>
+  <button class="edit-task" id=<%=task.id%>>Edit</button>
+<% end %>
+</ul>

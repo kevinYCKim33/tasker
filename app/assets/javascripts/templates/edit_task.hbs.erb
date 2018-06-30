@@ -1,0 +1,8 @@
+{{#task}}
+<form action="/tasks/{{id}}" accept-charset="UTF-8" data-remote="true" method="post">
+  <input name="utf8" type="hidden" value="✓">
+  <input type="hidden" name="_method" value="patch">
+  <input type="text" name="task" value="{{content}}">
+  <input type="submit" name="commit" value="Edit" data-disable-with="Edit">
+</form>
+{{/task}}

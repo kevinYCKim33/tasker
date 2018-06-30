@@ -3,3 +3,9 @@
 <%= link_to("Sign Out", destroy_user_session_path, method: 'delete') %>
 
 <h2><%=link_to("Create a new list", new_list_path)%></h2>
+
+<ul>
+<% @lists.each do |list| %>
+  <li><%= link_to(list.name, list) %></li>
+<% end %>
+</ul>
